@@ -53,7 +53,34 @@ const button = document.getElementById("valentinesButton");
 button.addEventListener("click", () => {
   if (button.textContent === "Click Me! ❤") {
     button.textContent = "loading...";
-    fetch('send_mail.php')
+    button.addEventListener("click", () => {
+  if (button.textContent === "Click Me! ❤") {
+    button.textContent = "sending...";
+    
+    fetch('https://formspree.io/f/mreaplye', {
+      method: 'POST',
+      body: JSON.stringify({ 
+        message: "She clicked your Valentine button! ❤️",
+        time: new Date().toLocaleString()
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        button.textContent = "I'll love you forever! ❤️";
+      } else {
+        button.textContent = "Error 😞";
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      button.textContent = "Error 😞";
+    });
+  }
+});
       .then(response => {
         if (response.ok) {
           button.textContent = "Check Your Email 🙃";
