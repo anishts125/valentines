@@ -7,32 +7,6 @@ var stars = 500;
 var colorrange = [0, 60, 240];
 var starArray = [];
 
-/* ---------------------------
-   Start Button Click Logic
----------------------------- */
-startButton.addEventListener("click", () => {
-  // Play music
-  music.play();
-
-  // Hide start screen
-  startScreen.style.display = "none";
-
-  // Show canvas
-  canvas.style.display = "block";
-
-  // Set canvas size
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  // **Important:** create stars AFTER canvas size
-  createStars();
-
-  animationStarted = true;
-
-  // Start animation
-  window.requestAnimationFrame(draw);
-});
-
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
